@@ -1,0 +1,19 @@
+
+
+ 
+    <div class="row" ng-init="Main.loadAll()">
+        <div class="col-md-12" ng-repeat="(name,Url) in Main.url">
+        
+        <h1 class="center-align" >{{name | uppercase}}</h1>
+        <my-book src="Url" ng-if="name=='books'"></my-book>
+
+        <my-character src="Url" ng-if="name=='characters'"></my-character>  
+        
+        <my-house src="Url" ng-if="name=='houses'"></my-house>      
+         
+         </div>
+
+ 
+</div>
+
+    

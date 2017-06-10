@@ -1,0 +1,55 @@
+
+<button type="button" class="btn btn-info"  data-toggle="collapse" data-target="#demo1">House Filter</button>
+  <div id="demo1" class="collapse">
+    <div class="col-md-12"> 
+     <h4>Filter By</h4>
+         <input type="search" ng-model="q1" placeholder="Filter By ..." aria-label="filter friends" />
+    </div>
+    
+  </div>
+
+      <div class="card hover-1 ">
+            <div class="col-md-12" ng-repeat="list in data |  orderBy : 'name' | filter:q1 as results">
+        
+              <div class="card medium grey hoverable">
+                    <div class="card-content white-text">
+                           <span class="card-title">
+                            <h5 class="center-align">{{list.name}}</h5>
+                        </span> 
+                          <h5 class="center-align">Region : {{list.region}}
+                          </h5>
+                          <hr>
+                          <h5 class="center-align">CoatOfArms : {{list.coatOfArms}}</h5>
+
+                           <div class="row">
+                       <div class="col s4">
+                       <h4 class="left-align">Founded</h4>
+                       
+                       <h5 class="left-align" ng-if="list.founded == ''">Unknown </h5>  
+                       <h5 class="left-align" ng-if="list.founded != ''">{{list.founded}} </h5> 
+                       
+                       </div>  
+                         <div class="col s4">
+                      <h4 class="center-align">Words</h4>
+                      <h5 class="center-align" ng-if="list.words == ''">Unknown </h5>  
+                       <h5 class="center-align" ng-if="list.words != ''">{{list.words}} </h5>  
+                       
+                       </div>
+                       
+                         <div class="col s4">
+                      <h4 class="right-align">Died</h4>
+                      <h5 class="right-align" ng-if="list.diedOut == ''">Unknown </h5>  
+                       <h5 class="right-align" ng-if="list.diedOut != ''">{{list.diedOut}} </h5>  
+                       
+                       </div>
+                      
+                       </div>
+                        
+                                        
+                    </div>
+                     <div class="card-action" class="center-align">
+                        <a ng-href="#!/houses/{{$index+1}}" style="color: #2d1661;font-weight: bolder">FULL DETAILS</a>
+                     </div>
+                </div>
+                
+            </div>  

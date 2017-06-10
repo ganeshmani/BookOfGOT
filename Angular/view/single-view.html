@@ -1,0 +1,207 @@
+
+<div class="row" ng-init="display.load()">
+     <div class="col-md-12">
+             
+                <div class="card hoverable"  ng-if="display.value == 'books'">
+                    <div class="card-content">
+                        <span class="card-title">
+                            <h2 class="center-align">{{display.url.name}} </h2>
+                        </span> 
+                        <hr>
+                        <h4 class="center-align">ISBN : {{display.url.isbn}}</h4>
+                        <span><h5 class="center-align">Published By :{{display.url.publisher}} </h5></span>  
+                        <hr>
+                       <h4 class="center-align">Author</h4>
+                       <span><h5 class="center-align" ng-repeat="author in display.url.authors">{{author}} </h5></span>   
+                       <hr>
+                       <div>
+                       <div class="col-md-4">
+                       <h4 class="left-align">Country</h4>
+                       <h5 class="left-align">{{display.url.country}} </h5>
+                       
+                       </div>  
+                       
+                         <div class="col-md-4">
+                      <h4 class="center-align">Type</h4>
+                       <h5 class="center-align">{{display.url.mediaType}} </h5>  
+                       
+                       </div>
+                       <div class="col-md-4">
+                        <h4 class="right-align">No.Of.Pages</h4>
+                       <h5 class="center-align"> {{display.url.numberOfPages}} </h5>    
+                       </div>
+                       </div>
+                       <hr>
+                       <span><h4 class="center-align">Released On :</h4>
+                         <h5 class="center-align">{{display.url.released | date : 'medium'}}</h5>
+                       </span>
+                       </div>                
+                    </div>
+
+               </div>
+                <h1 class="center-align" ng-if="display.value == 'books'">Characters</h1>
+                <div class="col-md-12" ng-repeat="list in display.bookcharacters" ng-if="display.value == 'books'">
+               
+              <div class="card medium hoverable white-text blue-grey">
+                    <div class="card-content ">
+                           <span class="card-title">
+                            <h3 class="center-align" ng-if="list.name == ''">UnKnown</h3>
+                            <h3 class="center-align" ng-if="list.name != ''">{{list.name}}</h3> 
+                             <h5 class="center-align">Alias : <span  ng-repeat="alias in list.aliases">  {{alias}} </span> </h5>
+                            </span> 
+
+                            <hr>
+                            <h5 class="center-align">
+                             Gender : 
+                            <span>{{list.gender}}</span>
+                            </h5>
+                            <hr>
+                            <div class="row">
+                       <div class="col s4">
+                       <h4 class="left-align">Born</h4>
+                       
+                       <h5 class="left-align" ng-if="list.born == ''">Unknown </h5>  
+                       <h5 class="left-align" ng-if="list.born != ''">{{list.born}} </h5> 
+                       
+                       </div>  
+                       
+                         <div class="col s4">
+                      <h4 class="center-align">Culture</h4>
+                      <h5 class="center-align" ng-if="list.culture == ''">Unknown </h5>  
+                       <h5 class="center-align" ng-if="list.culture != ''">{{list.culture}} </h5>  
+                       
+                       </div>
+                       <div class="col s4">
+                        <h4 class="right-align">Died</h4>
+                        <h5 class="right-align" ng-if="list.died == ''">Unknown </h5>  
+                       <h5 class="right-align" ng-if="list.died != ''">{{list.died}}</h5> 
+                      
+                       </div>
+                       </div>
+                        
+                        
+                                        
+                    </div>
+                    </div>
+
+                    </div>
+
+                <div class="card large hoverable"  ng-if="display.value == 'characters'">
+                    <div class="card-content">
+                        <span class="card-title">
+                            <h3 class="center-align">{{display.url.name}} <span style="color: #5a16f4" ng-repeat="alias in display.url.aliases">{{alias}}</span></h3>
+                            <h4 class="center-align">Gender : {{display.url.gender}}</h4>
+                        </span> 
+                        <hr>
+                        <h4 class="center-align">Culture : {{display.url.culture}}</h4>
+                        <span><h5 class="center-align">Published By :{{display.url.publisher}} </h5></span>  
+                        <hr>
+                       <div class="row">
+                       <div class="col s4">
+                       <h4 class="left-align">Father</h4>
+                       
+                       <h5 class="left-align" ng-if="display.url.father == ''">Unknown </h5>  
+                       <h5 class="left-align" ng-if="display.url.father != ''">{{display.url.father}} </h5> 
+                       
+                       </div>  
+                       
+                         <div class="col s4">
+                      <h4 class="center-align">Mother</h4>
+                      <h5 class="center-align" ng-if="display.url.mother == ''">Unknown </h5>  
+                       <h5 class="center-align" ng-if="display.url.mother != ''">{{display.url.mother}} </h5>  
+                       
+                       </div>
+                       <div class="col s4">
+                        <h4 class="right-align">Spouse</h4>
+                        <h5 class="right-align" ng-if="display.url.spouse == ''">Unknown </h5>  
+                       <h5 class="right-align" ng-if="display.url.spouse != ''">{{display.url.spouse}}</h5> 
+                      
+                       </div>
+                       </div>
+                       <hr>
+                       <h4 class="center-align">Allegiances :</h4><h5 class="center-align" ng-repeat="all in display.url.allegiances">{{all}}</h5>
+                       <span><h5 class="center-align"> </h5></span>                   
+                    </div>
+                </div>
+
+                    <h1 class="center-align" ng-if="display.value == 'characters'">Books</h1>
+                   <div class="col-md-12" ng-repeat="list in display.characterbooks" ng-if="display.value == 'characters'">
+        
+              <div class="card medium  hoverable">
+                    
+                     <div class="card-content" ng-href="#!/books/{{$index+1}}">
+                        <span class="card-title">
+                            <h2 class="center-align">{{list.name}}</h2>
+                        </span> 
+                      <hr>
+                      <h4 class="center-align">Author
+                          <p ng-repeat="author in list.authors">{{author}}</p>
+                        </h4>
+                      <h5 class="center-align">Published By
+                           <p>{{list.publisher}}</p>
+                        </h5>
+                        <span>
+                          <h5 class="center-align"></h5>
+                        </span>   
+                     </div>
+                   
+                    
+                   </div>
+               </div>
+
+
+
+
+                <div class="card large hoverable"  ng-if="display.value == 'houses'">
+                    <div class="card-content">
+                        <span class="card-title">
+                            <h3 class="center-align">{{display.url.name}} </h3>
+                            <h4 class="center-align">Region :</h4><h5 class="center-align">{{display.url.region}}</h5>
+                        </span> 
+                        <hr>
+                        <h4 class="center-align" >CoatOfArms : {{display.url.coatOfArms}}</h4>
+                        <span><h5 class="center-align">Words :{{display.url.words}} </h5></span>  
+                        <hr>
+                       <h4 class="center-align" ng-repeat="seat in display.url.seats">{{seat}}</h4>
+                       <span><h5 class="center-align"> </h5></span>   
+                       <hr>
+                       <h4 class="center-align">Title</h4>
+                       <span><h5 class="center-align"> {{display.url.title}}</h5></span>  
+                       <hr>
+                        <div class="row">
+                       <div class="col s4">
+                       <h4 class="left-align">Founded</h4>
+                       
+                       <h5 class="left-align" ng-if="display.url.founded == ''">Unknown </h5>  
+                       <h5 class="left-align" ng-if="display.url.founded != ''">{{display.url.founded}} </h5> 
+                       
+                       </div>  
+                         <div class="col s4">
+                      <h4 class="center-align">Words</h4>
+                      <h5 class="center-align" ng-if="display.url.words == ''">Unknown </h5>  
+                       <h5 class="center-align" ng-if="display.url.words != ''">{{display.url.words}} </h5>  
+                       
+                       </div>
+                       
+                         <div class="col s4">
+                      <h4 class="right-align">Died</h4>
+                      <h5 class="right-align" ng-if="display.url.diedOut == ''">Unknown </h5>  
+                       <h5 class="right-align" ng-if="display.url.diedOut != ''">{{display.url.diedOut}} </h5>  
+                       
+                       </div>
+                      
+                       </div>                 
+                    </div>
+                </div>
+                
+                
+       </div>
+
+       <div class="col-md-12">
+      <ul class="pager">
+                    <li class="next">
+                        <a href="#!/">Back to Home &rarr;</a>
+                    </li>
+                </ul>
+
+   </div>

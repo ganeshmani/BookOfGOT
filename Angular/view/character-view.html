@@ -1,0 +1,59 @@
+
+<button type="button" class="btn btn-info"  data-toggle="collapse" data-target="#democ">Character Filter</button>
+  <div id="democ" class="collapse">
+    <div class="col-md-12"> 
+     <h4>Filter By</h4>
+         <input type="search" ng-model="q2" placeholder="Filter By ..." aria-label="filter friends" />
+    </div>
+    
+  </div>
+      
+            <div class="col-md-12" ng-repeat="list in data | orderBy : 'name' | filter:q2 as results">
+        
+              <div class="card medium hoverable white-text blue-grey">
+                    <div class="card-content ">
+                           <span class="card-title">
+                            <h3 class="center-align" ng-if="list.name == ''">UnKnown</h3>
+                            <h3 class="center-align" ng-if="list.name != ''">{{list.name}}</h3> 
+                             <h5 class="center-align"> Alias : <span  ng-repeat="alias in list.aliases"> {{alias}} </span> </h5>
+                            </span> 
+
+                            <hr>
+                            <h5 class="center-align">
+                             Gender : 
+                            <span>{{list.gender}}</span>
+                            </h5>
+                            <hr>
+                            <div class="row">
+                       <div class="col s4">
+                       <h4 class="left-align">Born</h4>
+                       
+                       <h5 class="left-align" ng-if="list.born == ''">Unknown </h5>  
+                       <h5 class="left-align" ng-if="list.born != ''">{{list.born}} </h5> 
+                       
+                       </div>  
+                       
+                         <div class="col s4">
+                      <h4 class="center-align">Culture</h4>
+                      <h5 class="center-align" ng-if="list.culture == ''">Unknown </h5>  
+                       <h5 class="center-align" ng-if="list.culture != ''">{{list.culture}} </h5>  
+                       
+                       </div>
+                       <div class="col s4">
+                        <h4 class="right-align">Died</h4>
+                        <h5 class="right-align" ng-if="list.died == ''">Unknown </h5>  
+                       <h5 class="right-align" ng-if="list.died != ''">{{list.died}}</h5> 
+                      
+                       </div>
+                       </div>
+                        
+                        
+                                        
+                    </div>
+                    <div class="card-action center-align">
+                         <a ng-href="#!/characters/{{$index+1}}" style="color: #e84448;font-weight: bolder">FULL DETAILS</a>
+                    </div>
+                    
+                </div>
+                
+         
